@@ -26,7 +26,7 @@ jobs:
         run: dotnet build src/api.one/msft.api.one/msft.api.one.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o src/api.one/msft.api.one/msft.api.one.csproj
+        run: dotnet publish src/api.one/msft.api.one/msft.api.one.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
