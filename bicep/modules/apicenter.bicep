@@ -31,7 +31,10 @@ param apicenterdescription string = apicentertitle
 resource apicenter 'Microsoft.ApiCenter/services@2024-03-01' = {
   name: 'apicenter-${name}-${env}'
   location: location
-  properties: {}
+  sku: {
+      name: 'Free'
+  }
+  
 }
 
 resource apicenterworkspace 'Microsoft.ApiCenter/services/workspaces@2024-03-01' = {
