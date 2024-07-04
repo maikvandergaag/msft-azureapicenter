@@ -29,7 +29,7 @@ param apicentertitle string
 param apicenterdescription string = apicentertitle
 
 resource apicenter 'Microsoft.ApiCenter/services@2024-03-01' = {
-  name: 'apicenter-${name}-${env}'
+  name: 'apic-${name}-${env}'
   location: location
   sku: {
       name: 'Free'

@@ -53,12 +53,50 @@ module apicenter 'modules/apicenter.bicep' = {
 }
 
 module apiinfra 'modules/api-infra.bicep' = {
-  name: 'apiinfra'
+  name: 'apiinfra-01'
+  params: {
+    env: env
+    name: '${name}-01'
+    location: location
+    appSettings:{
+      APPINSIGHTS_INSTRUMENTATIONKEY: insights.outputs.appInsightsKey
+      APPLICATIONINSIGHTS_CONNECTION_STRING: insights.outputs.appInsightsConnectionString
+  }
+  }
+  scope: rg
+}
+
+module apiinfra01 'modules/api-infra.bicep' = {
+  name: 'apiinfra-02'
+  params: {
+    env: env
+    name: '${name}-02'
+    location: location
+    appSettings:{
+      APPINSIGHTS_INSTRUMENTATIONKEY: insights.outputs.appInsightsKey
+      APPLICATIONINSIGHTS_CONNECTION_STRING: insights.outputs.appInsightsConnectionString
+      ApplicationInsightsAgent_EXTENSION_VERSION: '~3'
+  }
+  }
+  scope: rg
+}
+
+module insights 'modules/api-insights.bicep' = {
+  name: 'insights'
   params: {
     env: env
     name: name
     location: location
-    repositoryUrl: repositoryUrlOne
+  }
+  scope: rg
+}
+
+module mi 'modules/managedidentity.bicep' = {
+  name: 'mi'
+  params: {
+    env: env
+    name: name
+    location: location
   }
   scope: rg
 }

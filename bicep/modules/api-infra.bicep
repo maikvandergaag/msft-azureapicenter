@@ -16,7 +16,7 @@ param env string
 param name string
 
 @description('The SKU of App Service Plan')
-param sku string = 'F1'
+param sku string = 'S1'
 
 @description('The version of the runtime')
 param linuxFxVersion string = 'DOTNETCORE|8.0'
@@ -24,13 +24,10 @@ param linuxFxVersion string = 'DOTNETCORE|8.0'
 @description('The location of the resource')
 param location string = resourceGroup().location
 
-@description('The URL of the repository')
-param repositoryUrl string
+@description('Additional app settings')
+param appSettings object = {}
 
-@description('The branch of the repository')
-param branch string = 'main'
-
-resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2023-12-01' = {
   name: 'hp-${name}-${env}'
   location: location
   properties: {
@@ -42,23 +39,23 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   kind: 'linux'
 }
 
-resource appService 'Microsoft.Web/sites@2020-06-01' = {
+resource appService 'Microsoft.Web/sites@2023-12-01' = {
   name: 'api-${name}-${env}'
   location: location
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
       linuxFxVersion: linuxFxVersion
+      alwaysOn: true
     }
+    httpsOnly: true
   }
 }
 
-resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
-  name: 'web'
+resource siteconfig 'Microsoft.Web/sites/config@2023-01-01' = {
   parent: appService
-  properties: {
-    repoUrl: repositoryUrl
-    branch: branch
-    isManualIntegration: true
-  }
+  name: 'appsettings'
+  properties: union({
+      XDT_MicrosoftApplicationInsights_Mode: 'Recommended'
+    }, appSettings)
 }
