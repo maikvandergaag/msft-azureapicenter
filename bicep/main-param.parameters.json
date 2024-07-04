@@ -14,8 +14,8 @@
     "apicenterdescription": {
       "value": "API Workspace for the Cloud Lunch and Learn API"
     },
-    "repositoryUrl": {
-      "value": "https://github.com/maikvandergaag/msft-azureapicenter"
+    "repositoryUrlOne": {
+      "value": "https://github.com/maikvandergaag/msft-azureapicenter/tree/main/src/api.one"
     }
   }
 }

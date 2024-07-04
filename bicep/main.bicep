@@ -33,7 +33,7 @@ param apicentertitle string = 'API Center'
 param apicenterdescription string = apicentertitle
 
 @description('The URL of the repository')
-param repositoryUrl string
+param repositoryUrlOne string
 
 resource rg 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: 'sponsor-rg-${name}-${env}'
@@ -58,7 +58,7 @@ module apiinfra 'modules/api-infra.bicep' = {
     env: env
     name: name
     location: location
-    repositoryUrl: repositoryUrl
+    repositoryUrl: repositoryUrlOne
   }
   scope: rg
 }
