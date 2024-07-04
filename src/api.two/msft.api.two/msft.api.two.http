@@ -1,0 +1,6 @@
+@msft.api.two_HostAddress = http://localhost:5146
+
+GET {{msft.api.two_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

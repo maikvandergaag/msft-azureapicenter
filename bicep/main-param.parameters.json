@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "env": {
+      "value": "prd"
+    },
+    "name": {
+      "value": "demo"
+    },
+    "apicentertitle": {
+      "value": "Cloud Lunch and Learn API Workspace"
+    },
+    "apicenterdescription": {
+      "value": "API Workspace for the Cloud Lunch and Learn API"
+    },
+    "repositoryUrl": {
+      "value": "https://github.com/maikvandergaag/msft-azureapicenter"
+    }
+  }
+}
