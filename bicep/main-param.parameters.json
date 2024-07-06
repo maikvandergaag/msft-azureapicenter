@@ -6,16 +6,13 @@
       "value": "prd"
     },
     "name": {
-      "value": "demo"
+      "value": "demo-cll"
     },
     "apicentertitle": {
       "value": "Cloud Lunch and Learn API Workspace"
     },
     "apicenterdescription": {
       "value": "API Workspace for the Cloud Lunch and Learn API"
-    },
-    "repositoryUrlOne": {
-      "value": "https://github.com/maikvandergaag/msft-azureapicenter/tree/main/src/api.one"
     }
   }
 }

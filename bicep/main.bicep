@@ -32,12 +32,13 @@ param apicentertitle string = 'API Center'
 @description('Description for the workspace within Azure API Center')
 param apicenterdescription string = apicentertitle
 
-@description('The URL of the repository')
-param repositoryUrlOne string
-
 resource rg 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: 'sponsor-rg-${name}-${env}'
   location: location
+  tags: {
+    environment: env
+    clean: 'false'
+  }
 }
 
 module apicenter 'modules/apicenter.bicep' = {
