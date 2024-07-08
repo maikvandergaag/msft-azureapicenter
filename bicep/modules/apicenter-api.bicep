@@ -62,14 +62,14 @@ resource apiCenterAPI 'Microsoft.ApiCenter/services/workspaces/apis@2024-03-01' 
     ]
     contacts: [
       {
-        email: 'apideveloper@contoso.com'
+        email: 'apideveloper@familie-vandergaag.nl'
         name: 'API Developer'
         url: 'https://learn.microsoft.com/azure/api-center/overview'
       }
     ]
     customProperties: {}
-    summary: 'This is a test API, deployed using a template!'
-    description: 'This is a test API, deployed using a template!'
+    summary: 'This is a demo API, deployed using a template!'
+    description: 'This is a demo API, deployed using a template!'
   }
 }
 
